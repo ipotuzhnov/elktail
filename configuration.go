@@ -145,8 +145,14 @@ func LoadDefault() (conf *Configuration, err error)  {
 
 
 func (config *Configuration) Flags() []cli.Flag {
-	cli.VersionFlag.Usage = "Print the version"
-	cli.HelpFlag.Usage = "Show help"
+	Name:	cli.VersionFlag.GetName(),
+		Usage: "Print the version",
+	}
+	cli.HelpFlag = cli.BoolFlag{
+	Name:	cli.HelpFlag.GetName(),
+		Usage: "Show help",
+	}
+
 	return []cli.Flag {
 		cli.StringFlag{
 			Name:        "url",
